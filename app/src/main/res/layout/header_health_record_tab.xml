@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/orange_header">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/round_tab"
+        android:layout_marginRight="10dp"
+        android:weightSum="2">
+
+
+
+        <Button
+            android:id="@+id/btnwearable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Patient's information"
+            android:textAllCaps="false"
+            android:textColor="#b92907"
+            android:background="@drawable/round_tab"
+
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnNFCTab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NFC"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:background="@drawable/round_tab"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</LinearLayout>

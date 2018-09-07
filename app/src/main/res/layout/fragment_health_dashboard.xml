@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <include
+        layout="@layout/header_dashboard_tab"
+        android:visibility="gone"/>
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_background">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Your Health Score"
+                    android:textColor="@color/orange_textHeader"
+                    android:textSize="18sp" />
+
+                <az.plainpie.PieView xmlns:plainpie="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/pieView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    plainpie:inner_pie_padding="15"
+                    plainpie:inner_text_visibility="true"
+                    plainpie:percentage="75"
+                    plainpie:percentage_size="50" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/round_textview"
+                    android:gravity="center"
+
+                    android:padding="3dp"
+                    android:text="Your sugur level is too low.get sugur if you feet hungry,norvos or weak"
+
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All Result"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:paddingLeft="10dp"
+                android:textColor="@color/orange_header"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:orientation="vertical">
+
+                    <az.plainpie.PieView xmlns:plainpie="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/pieViewHeartRate"
+                        android:layout_width="89dp"
+                        android:layout_height="95dp"
+                        android:layout_gravity="center"
+                        plainpie:inner_pie_padding="12"
+                        plainpie:inner_text_visibility="true"
+                        plainpie:layout_constraintBottom_toBottomOf="parent"
+                        plainpie:layout_constraintLeft_toLeftOf="parent"
+                        plainpie:layout_constraintStart_toStartOf="parent"
+                        plainpie:layout_constraintTop_toTopOf="parent"
+                        plainpie:layout_constraintVertical_bias="0.242"
+                        plainpie:percentage="75"
+                        plainpie:percentage_size="20"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Heart Rate"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <az.plainpie.PieView xmlns:plainpie="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/pieViewBloodSugur1"
+                        android:layout_width="89dp"
+                        android:layout_height="95dp"
+                        android:layout_gravity="center"
+                        plainpie:inner_pie_padding="12"
+                        plainpie:inner_text_visibility="true"
+                        plainpie:layout_constraintBottom_toBottomOf="parent"
+                        plainpie:layout_constraintLeft_toLeftOf="parent"
+                        plainpie:layout_constraintStart_toStartOf="parent"
+                        plainpie:layout_constraintTop_toTopOf="parent"
+                        plainpie:layout_constraintVertical_bias="0.242"
+                        plainpie:percentage="75"
+                        plainpie:percentage_size="20"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Blood Sugar"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <az.plainpie.PieView xmlns:plainpie="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/pieViewBloodSugur2"
+                        android:layout_width="89dp"
+                        android:layout_height="95dp"
+                        android:layout_gravity="center"
+                        plainpie:inner_pie_padding="12"
+                        plainpie:inner_text_visibility="true"
+                        plainpie:layout_constraintBottom_toBottomOf="parent"
+                        plainpie:layout_constraintLeft_toLeftOf="parent"
+                        plainpie:layout_constraintStart_toStartOf="parent"
+                        plainpie:layout_constraintTop_toTopOf="parent"
+                        plainpie:layout_constraintVertical_bias="0.242"
+                        plainpie:percentage="75"
+                        plainpie:percentage_size="20"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Blood Sugar"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

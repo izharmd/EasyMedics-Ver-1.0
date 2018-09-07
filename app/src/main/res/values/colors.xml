@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <color name="colorPrimary">#fd3a0e</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#bc2707</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="orange_header">#fd3a0e</color>
+    <color name="orange_textHeader">#bc2706</color>
+    <color name="orange_lastReading">#b92907</color>
+    <color name="orange_footerButton">#fd3a0e</color>
+    <color name="orange_textColor">#fd390f</color>
+    <color name="gray">#f4f4f4</color>
+    <color name="graydark">#bcc2d0</color>
+    <color name="grayLight">#5a6277</color>
+
+</resources>

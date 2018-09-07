@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/orange_header">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/round_tab"
+        android:layout_marginRight="10dp"
+        android:weightSum="3">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="My Shares"
+            android:textAllCaps="false"
+            android:background="@color/gray"
+            android:textColor="@color/graydark"
+            android:layout_marginLeft="5dp"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnwearable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Wearables"
+            android:textAllCaps="false"
+            android:background="@color/gray"
+            android:textColor="@color/graydark"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnLifeStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lifestyale"
+            android:textAllCaps="false"
+            android:textColor="@color/orange_header"
+            android:background="@color/white"
+            android:layout_marginRight="5dp"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</LinearLayout>

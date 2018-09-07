@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_background"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:background="@drawable/ic_heart_rate_graph"></LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height=".5dp"
+            android:background="@color/graydark">
+
+        </View>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginTop="10dp">
+
+                <com.daasuu.ahp.AnimateHorizontalProgressBar
+                    android:id="@+id/heart_progress_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="2.5"
+                    android:paddingLeft="30dp"
+                    android:layout_gravity="center"
+                    app:ahp_backgroundColor="@color/white"
+                    app:ahp_progressColor="@color/colorAccent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="92"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="bpm HEART RATE"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginTop="5dp">
+
+                <com.daasuu.ahp.AnimateHorizontalProgressBar
+                    android:id="@+id/sys_progress_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="2.5"
+                    android:layout_gravity="center"
+                    android:paddingLeft="30dp"
+                    app:ahp_progressColor="@color/colorAccent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="85"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="mmHg SYS"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginTop="5dp">
+
+                <com.daasuu.ahp.AnimateHorizontalProgressBar
+                    android:id="@+id/dia_progress_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="2.5"
+                    android:layout_gravity="center"
+                    android:paddingLeft="30dp"
+                    app:ahp_progressColor="@color/colorAccent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="78"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="mmHg DIA"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_pressur_textview"
+            android:gravity="center"
+            android:text="Your current PRESSURE is to HEIGH"
+            android:textSize="16sp" />
+
+
+
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
