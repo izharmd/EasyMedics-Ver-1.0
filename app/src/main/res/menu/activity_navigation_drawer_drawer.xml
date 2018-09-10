@@ -44,6 +44,11 @@
             android:icon="@drawable/ic_weightstatus"
             android:title="Weight Status" />
 
+        <item
+            android:id="@+id/nav_BloodPressure"
+            android:icon="@drawable/ic_bodytemperaturel"
+            android:title="Blood Pressure" />
+
 
 
     </group>

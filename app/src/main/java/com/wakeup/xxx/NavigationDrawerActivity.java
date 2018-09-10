@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import FragmentView.BloodGlucoseFragment;
+import FragmentView.BloodPressureFragment;
 import FragmentView.DiagonosisBoardFragment;
 import FragmentView.FavouriteFragment;
 import FragmentView.FragmentWearable;
@@ -36,23 +37,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wakeup.xxx.Common.Common;
+import com.wakeup.xxx.Utils.PreferenceConnector;
 import com.weike.chiginon.BroadcastCommand;
 import com.weike.chiginon.BroadcastData;
 import com.weike.chiginon.DataPacket;
@@ -91,10 +88,16 @@ public class NavigationDrawerActivity extends AppCompatActivity
     TextView textResult;
     private List<String> list;
     ArrayList<Integer> array_image;
+    ArrayList<String> array_result;
+    ArrayList<String> array_BMP;
 
     private BluetoothLeService mBluetoothLeService;
     private String mDeviceAddress;
     private CommandManager manager;
+
+    String realTimeHeartRate;
+    String bloodPressure;
+    String bloodPressure1;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -200,17 +203,17 @@ public class NavigationDrawerActivity extends AppCompatActivity
                             //Real-time measurement
                             if (data.get(1) == 0x0A) {
                                 //Heart rate
-                                String heartRate = stringBuffer.substring(5, 8);
-                                textResult.setText("Heart Rate :" + heartRate);
-                                Toast.makeText(context, heartRate, Toast.LENGTH_LONG).show();
+                                 realTimeHeartRate = stringBuffer.substring(5, 8);
+                                textResult.setText("Heart Rate :" + realTimeHeartRate);
+                                Toast.makeText(context, realTimeHeartRate, Toast.LENGTH_LONG).show();
                             } else if (data.get(1) == 0x12) {
                                 //Blood oxygen
                                 Toast.makeText(NavigationDrawerActivity.this, "0x12", Toast.LENGTH_SHORT).show();
                             } else if (data.get(1) == 0x22) {
                                 //blood pressure
                                 try {
-                                    String bloodPressure = stringBuffer.substring(5, 10);
-                                    String bloodPressure1 = stringBuffer.substring(10, 12);
+                                     bloodPressure = stringBuffer.substring(5, 10);
+                                     bloodPressure1 = stringBuffer.substring(10, 12);
                                     textResult.setText("Blood Pressure :" + bloodPressure + "/" + bloodPressure1);
                                     // Toast.makeText(context, stringBuffer.toString(), Toast.LENGTH_LONG).show();
                                 } catch (Exception e) {
@@ -248,7 +251,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //
         toolbar_title = (TextView) findViewById(R.id.toolbar_title);
-        // toolbar_title.setText("Your BLOOD PRESSURE");
+         toolbar_title.setText("Easy Medics");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -278,7 +281,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         //Connect to Bluetooth
         initdata();
 
-        MyAdapter myAdapter = new MyAdapter(list, array_image);
+        MyAdapter myAdapter = new MyAdapter(list, array_image,array_result,array_BMP);
         gridview.setAdapter(myAdapter);
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -478,6 +481,18 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         text_header = (TextView) findViewById(R.id.text_header);
 
+
+       /*String heartRate=  PreferenceConnector.readString(NavigationDrawerActivity.this, "heartRate",realTimeHeartRate);
+       String pb =  PreferenceConnector.readString(NavigationDrawerActivity.this, "bloodPressure",bloodPressure1);
+
+       if(heartRate.equals("00")){
+
+       }*/
+
+
+        PreferenceConnector.writeString(NavigationDrawerActivity.this, "heartRate","00");
+        PreferenceConnector.writeString(NavigationDrawerActivity.this, "bloodPressure","00");
+
     }
 
     @Override
@@ -496,7 +511,18 @@ public class NavigationDrawerActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
 
+
+        PreferenceConnector.writeString(NavigationDrawerActivity.this, "heartRate",realTimeHeartRate);
+        PreferenceConnector.writeString(NavigationDrawerActivity.this, "bloodPressure",bloodPressure + "/" + bloodPressure1);
+
+
+        // Common.realTimeHeartRate = realTimeHeartRate;
+
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -628,6 +654,21 @@ public class NavigationDrawerActivity extends AppCompatActivity
                 fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
             }
 
+        }else if(id == R.id.nav_BloodPressure){
+            toolbar_title.setText("Your BLOOD PRESSURE");
+            ll_header.setVisibility(View.VISIBLE);
+            ll_tab.setVisibility(View.GONE);
+            ll_tab_healthRecord.setVisibility(View.GONE);
+            text_header.setText("Diastolic");
+            ll_header_healthMonitiring.setVisibility(View.GONE);
+            imv_header.setVisibility(View.VISIBLE);
+            imv_header.setImageResource(R.drawable.ic_share_icon);
+            imv_header_back.setVisibility(View.VISIBLE);
+            fragment = new BloodPressureFragment();
+            if (fragment != null) {
+                fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -668,44 +709,22 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
     private void initdata() {
         list = new ArrayList<>();
-//        list.add("Find the bracelet");
-//        list.add("Pull-down sync");
-//        list.add("Smart reminder");
-//        list.add("Find the bracelet");
-//        list.add("Shake to take pictures");
-//        list.add("Anti-lost");
-//        list.add("Electricity");
-//        list.add("version number");
-//        list.add("synchronised time");
-//        list.add("clear data");
-//        list.add("Fall");
-        //       list.add("Heart rate single measurement");
-        list.add("Heart rate measurement");
-//        list.add("Blood oxygen single measurement");
-//        list.add("Blood oxygen real-time measurement");
-//        list.add("Blood pressure single measurement");
-        list.add("Blood pressure measurement");
+
+        list.add("Heart Rate");
+        list.add("Blood Pressure");
 
         array_image = new ArrayList<Integer>();
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        //  array_image.add(R.drawable.ic_launcher_background);
-        /*array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);
-        array_image.add(R.drawable.ic_launcher_background);*/
+        array_image.add(R.drawable.ic_heart_home);
+        array_image.add(R.drawable.ic_blood_pressure_home);
 
+
+        array_result = new ArrayList<String>();
+        array_result.add(PreferenceConnector.readString(NavigationDrawerActivity.this,"heartRate",""));
+        array_result.add(PreferenceConnector.readString(NavigationDrawerActivity.this,"bloodPressure",""));
+
+        array_BMP = new ArrayList<>();
+        array_BMP.add("bmp");
+        array_BMP.add("mmhg");
 
     }
 
@@ -713,10 +732,14 @@ public class NavigationDrawerActivity extends AppCompatActivity
     class MyAdapter extends BaseAdapter {
         private List<String> list;
         private List<Integer> array_image;
+        private List<String> array_result;
+        private List<String> array_BMP;
 
-        public MyAdapter(List<String> list, List<Integer> array_image) {
+        public MyAdapter(List<String> list, List<Integer> array_image,List<String> array_result,List<String> array_BMP) {
             this.list = list;
             this.array_image = array_image;
+            this.array_result = array_result;
+            this.array_BMP = array_BMP;
         }
 
         @Override
@@ -742,6 +765,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
                 convertView = LayoutInflater.from(NavigationDrawerActivity.this).inflate(R.layout.channel_item, null);
                 viewHolder.text = (TextView) convertView.findViewById(R.id.channel_text);
                 viewHolder.grid_image = (ImageView) convertView.findViewById(R.id.grid_image);
+                viewHolder.textResult = (TextView) convertView.findViewById(R.id.textResult);
+                viewHolder.textBMP = (TextView) convertView.findViewById(R.id.textBMP);
                 convertView.setTag(viewHolder);
 
             } else {
@@ -751,6 +776,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
             viewHolder.text.setText(list.get(i));
             viewHolder.grid_image.setImageResource(array_image.get(i));
+            viewHolder.textResult.setText(array_result.get(i));
+            viewHolder.textBMP.setText(array_BMP.get(i));
             return convertView;
         }
 
@@ -758,6 +785,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
     class ViewHolder {
         TextView text;
+        TextView textResult;
+        TextView textBMP;
         ImageView grid_image;
     }
 

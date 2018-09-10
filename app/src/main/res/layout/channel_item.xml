@@ -1,31 +1,62 @@
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="200dp"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
     android:layout_margin="10dp"
+    android:orientation="horizontal"
     card_view:cardCornerRadius="5dp"
-    card_view:cardElevation="5dp"
-    android:layout_height="200dp">
+    card_view:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/channel_text"
-        android:layout_width="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:text="tyui"
-        android:layout_height="50dp" />
-    <ImageView
-        android:id="@+id/grid_image"
-        android:layout_width="50dp"
-        android:layout_gravity="center"
-        android:layout_height="50dp">
-    </ImageView>
+        <ImageView
+            android:id="@+id/grid_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"></ImageView>
+
+        <TextView
+            android:id="@+id/channel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="tyui" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/textResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/orange_header"
+            android:text="00" />
+
+            <TextView
+                android:id="@+id/textBMP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="bottom"
+                android:textSize="12sp"
+
+                android:textColor="@color/colorNavAccentUnselected"
+                android:layout_marginLeft="2dp"
+                android:text="bpm" />
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>
