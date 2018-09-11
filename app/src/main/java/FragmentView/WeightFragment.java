@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.wakeup.xxx.R;
+import com.wakeup.easymedics.R;
 
 
 /**

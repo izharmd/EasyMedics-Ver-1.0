@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.wakeup.xxx.R;
+import com.wakeup.easymedics.R;
 
 /**
  * Created by BWS on 10/09/2018.

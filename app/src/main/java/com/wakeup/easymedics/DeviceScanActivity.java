@@ -1,6 +1,6 @@
 
 
-package com.wakeup.xxx;
+package com.wakeup.easymedics;
 
 import android.Manifest;
 import android.app.Activity;

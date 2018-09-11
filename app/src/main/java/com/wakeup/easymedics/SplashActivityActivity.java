@@ -1,4 +1,4 @@
-package com.wakeup.xxx;
+package com.wakeup.easymedics;
 
 import android.content.Intent;
 import android.os.Bundle;

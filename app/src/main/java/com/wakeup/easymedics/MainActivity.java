@@ -1,4 +1,4 @@
-package com.wakeup.xxx;
+package com.wakeup.easymedics;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -14,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;

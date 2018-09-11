@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wakeup.xxx.R;
+import com.wakeup.easymedics.R;
 
 import az.plainpie.PieView;
 

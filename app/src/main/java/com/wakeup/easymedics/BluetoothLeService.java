@@ -4,7 +4,7 @@
  * @date 2014/02/26
  *******************************************************************/
 
-package com.wakeup.xxx;
+package com.wakeup.easymedics;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

@@ -1,4 +1,4 @@
-package com.wakeup.xxx.Common;
+package com.wakeup.easymedics.Common;
 
 /**
  * Created by BWS on 10/09/2018.

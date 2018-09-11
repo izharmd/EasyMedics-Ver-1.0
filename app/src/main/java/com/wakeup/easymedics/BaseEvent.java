@@ -1,4 +1,4 @@
-package com.wakeup.xxx;
+package com.wakeup.easymedics;
 
 /**
  * Created by sunny on 2015/11/20.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wakeup.xxx">
+    package="com.wakeup.easymedics">
 
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".BluetoothConnectActivity"
+            android:name="com.wakeup.easymedics.BluetoothConnectActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,58 +31,58 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DeviceScanActivity"
+            android:name="com.wakeup.easymedics.DeviceScanActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BloodGlucoseActivity"
+            android:name="com.wakeup.easymedics.BloodGlucoseActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HelthDashBoardActivity"
+            android:name="com.wakeup.easymedics.HelthDashBoardActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashActivityActivity"
+            android:name="com.wakeup.easymedics.SplashActivityActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HealthMonetaringActivity"
+            android:name="com.wakeup.easymedics.HealthMonetaringActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HeartRateActivity"
+            android:name="com.wakeup.easymedics.HeartRateActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TempretureActivity"
+            android:name="com.wakeup.easymedics.TempretureActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".WeightActivity"
+            android:name="com.wakeup.easymedics.WeightActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DiagonosisBoardActivity"
+            android:name="com.wakeup.easymedics.DiagonosisBoardActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HealthRecordActivity"
+            android:name="com.wakeup.easymedics.HealthRecordActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HomeActivity"
+            android:name="com.wakeup.easymedics.HomeActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NavigationDrawerActivity"
+            android:name="com.wakeup.easymedics.NavigationDrawerActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
 
         <service
-            android:name=".BluetoothLeService"
+            android:name="com.wakeup.easymedics.BluetoothLeService"
             android:enabled="true" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.wakeup.easymedics.MainActivity" />
     </application>
 
 </manifest>

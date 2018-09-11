@@ -1,4 +1,4 @@
-package com.wakeup.xxx;
+package com.wakeup.easymedics;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

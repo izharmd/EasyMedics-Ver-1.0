@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="5"
-    tools:context="com.wakeup.xxx.MainActivity">
+    tools:context="com.wakeup.easymedics.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

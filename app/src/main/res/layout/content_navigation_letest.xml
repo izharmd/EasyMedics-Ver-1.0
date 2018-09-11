@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.wakeup.xxx.NavigationLetestActivity"
+    tools:context="com.wakeup.easymedics.NavigationLetestActivity"
     tools:showIn="@layout/app_bar_navigation_letest">
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.wakeup.xxx.Utils;
+package com.wakeup.easymedics.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

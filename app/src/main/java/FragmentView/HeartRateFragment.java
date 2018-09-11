@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wakeup.xxx.R;
+import com.wakeup.easymedics.R;
 import com.daasuu.ahp.AnimateHorizontalProgressBar;
 
 /**
