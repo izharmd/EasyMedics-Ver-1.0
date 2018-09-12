@@ -1,5 +1,9 @@
 package com.wakeup.easymedics;
 
+import android.app.ActionBar;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -95,8 +101,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
     private CommandManager manager;
 
     String realTimeHeartRate;
-    String bloodPressure;
-    String bloodPressure1;
+    String bloodPressueResult;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -147,13 +152,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
                     }
 
                     StringBuffer stringBuffer = new StringBuffer();
-                    //stringBuffer.append("接收的数据：");
                     // stringBuffer.append("Received data");
                     for (int i = 0; i < data.size(); i++) {
                         stringBuffer.append(data.get(i) + " ");
-
-
-                        //  Toast.makeText(context, "rtyui", Toast.LENGTH_LONG).show();
 
                     }
                     //   Toast.makeText(context, stringBuffer.toString(), Toast.LENGTH_LONG).show();
@@ -211,10 +212,11 @@ public class NavigationDrawerActivity extends AppCompatActivity
                             } else if (data.get(1) == 0x22) {
                                 //blood pressure
                                 try {
-                                    bloodPressure = stringBuffer.substring(5, 10);
-                                    bloodPressure1 = stringBuffer.substring(10, 12);
-                                    textResult.setText("Blood Pressure :" + bloodPressure + "/" + bloodPressure1);
-                                    // Toast.makeText(context, stringBuffer.toString(), Toast.LENGTH_LONG).show();
+                                   String bloodPressure = stringBuffer.substring(5, 10);
+                                   String bloodPressure1 = stringBuffer.substring(10, 12);
+
+                                    bloodPressueResult = bloodPressure +"/" + bloodPressure1;
+                                    textResult.setText("Blood Pressure :" + bloodPressueResult);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -240,15 +242,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
-        getSupportActionBar().hide();
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        // setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
         toolbar_title = (TextView) findViewById(R.id.toolbar_title);
         toolbar_title.setText("Easy Medics");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -486,17 +481,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
         text_header = (TextView) findViewById(R.id.text_header);
 
 
-       /*String heartRate=  PreferenceConnector.readString(NavigationDrawerActivity.this, "heartRate",realTimeHeartRate);
-       String pb =  PreferenceConnector.readString(NavigationDrawerActivity.this, "bloodPressure",bloodPressure1);
-
-       if(heartRate.equals("00")){
-
-       }*/
-
-
-//        PreferenceConnector.writeString(NavigationDrawerActivity.this, "heartRate", "00");
-//        PreferenceConnector.writeString(NavigationDrawerActivity.this, "bloodPressure", "00");
-
     }
 
     @Override
@@ -518,13 +502,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
     @Override
     public void onPause() {
         super.onPause();
-
+        PreferenceConnector.writeString(NavigationDrawerActivity.this, "bloodPressure", bloodPressueResult);
 
         PreferenceConnector.writeString(NavigationDrawerActivity.this, "heartRate", realTimeHeartRate);
-        PreferenceConnector.writeString(NavigationDrawerActivity.this, "bloodPressure", bloodPressure + "/" + bloodPressure1);
-
-
-        // Common.realTimeHeartRate = realTimeHeartRate;
 
     }
 
